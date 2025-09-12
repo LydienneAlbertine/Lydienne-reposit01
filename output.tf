@@ -4,9 +4,9 @@ value=var.firstname
 output "secondoutput"{
 value=var.lastname
 }
-output "restaurant"{
+output "resto1"{
 value=var.cajun
 }
-output "restauranta"{
+output "resto2"{
 value=var.kee
 }
