@@ -18,3 +18,6 @@ variable "lastname"{
 type=string
 default="albertine" 
 }
+variable "firstrestaurant"{
+type=string
+default="cajun"
