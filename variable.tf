@@ -12,9 +12,9 @@ variable "tenant_id"{
 }
 variable "firstname"{
 type=string
-default "lydienne"
+default="lydienne"
 }
 variable "last name"{
 type=string
-default "albertine" 
+default="albertine" 
 }
