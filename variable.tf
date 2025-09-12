@@ -21,3 +21,6 @@ default="albertine"
 variable "restaurant"{
 type=string
 default="cajun"
+variable "restauranta"{
+type=string
+default="kee"
