@@ -15,5 +15,5 @@ type=string
 default "lydienne"{
 }
 variable "last name"
-type=sting
+type=string
 default "albertine" {
