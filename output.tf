@@ -7,6 +7,6 @@ value=var.lastname
 output "restaurant"{
 value=var.cajun
 }
-output "restaurant"{
+output "restauranta"{
 value=var.kee
 }
