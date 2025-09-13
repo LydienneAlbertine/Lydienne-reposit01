@@ -37,3 +37,12 @@ value=var.movies
 output "creamlist"{
 value=var.icecream
 }
+output "songlist"{
+value=var.songs
+}
+output "colorlistt"{
+value=var.colors
+}
+output "travellist"{
+value=var.travels
+}
