@@ -10,3 +10,6 @@ value=var.cajun
 output "resto2"{
 value=var.kee
 }
+output "resto3"{
+value=var.heritage
+}
