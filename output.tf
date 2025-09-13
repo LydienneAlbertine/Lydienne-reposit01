@@ -31,3 +31,9 @@ value=var.falsetrue
 output "fruitlist"{
 value=var.fruit1
 }
+output "movieslist"{
+value=var.movies
+}
+output "creamlist"{
+value=var.icecream
+}
