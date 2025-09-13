@@ -19,3 +19,6 @@ value=var.restaurantc
 output "resto5"{
 value=var.restaurantc
 }
+output "listnumber"{
+value=var.millenium
+}
