@@ -62,3 +62,15 @@ variable "icecream"{
 type=list(string)
 default=["caramel","oreo","vanilla","chocolate","banana"]
 }
+variable "songs"{
+type=list(string)
+default=["treasure","alive","helium","firewall","flowers"]
+}
+variable "colors"{
+type=list(string)
+default=["green","red","yellow","blue","black"]
+}
+variable "travels"{
+type=list(string)
+default=["neworlean","australia","hawai","malibu","newzealand"]
+}
