@@ -28,3 +28,6 @@ value=var.truefalse
 output "trfl2"{
 value=var.falsetrue
 }
+output "fruitlist"{
+value=var.fruit1
+}
