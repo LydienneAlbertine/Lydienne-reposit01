@@ -18,11 +18,11 @@ variable "lastname"{
 type=string
 default="albertine" 
 }
-variable "restaurant"{
+variable "cajun"{
 type=string
-default="cajun"
+default="restaurant"
 }
-variable "restauranta"{
+variable "kee"{
 type=string
-default="kee"
+default="restauranta"
 }
