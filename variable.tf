@@ -50,7 +50,7 @@ variable"falsetrue"{
 type=bool
 default=false
 }
-variable "fruits1"{
+variable "fruits"{
 type=list(string)
 default=["mango","apple","pineapple","melon","pawpaw"]
 }
