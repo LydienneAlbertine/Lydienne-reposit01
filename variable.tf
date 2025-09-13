@@ -50,7 +50,11 @@ variable"falsetrue"{
 type=bool
 default=false
 }
-variable "fruit1"{
+variable "movies"{
 type=list(string)
-default=["mango","apple","melon","pineapple","pawpaw"]
+default=["avengers","garfield","xmen","jumanji","johnwick"]
+}
+variable "icecream"{
+type=list(string)
+default=["caramel","oreo","vanille","chocolate","banana"]
 }
