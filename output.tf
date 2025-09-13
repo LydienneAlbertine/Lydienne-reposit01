@@ -26,5 +26,5 @@ output "trfl1"{
 value=var.truefalse
 }
 output "trfl2"{
-value=var.truefalse
+value=var.falsetrue
 }
