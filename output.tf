@@ -29,7 +29,7 @@ output "trfl2"{
 value=var.falsetrue
 }
 output "fruitlist"{
-value=var.fruit1
+value=var.fruits
 }
 output "movieslist"{
 value=var.movies
