@@ -17,7 +17,7 @@ output "resto4"{
 value=var.restaurantc
 }
 output "resto5"{
-value=var.restaurantc
+value=var.restaurantd
 }
 output "listnumber"{
 value=var.millenium
