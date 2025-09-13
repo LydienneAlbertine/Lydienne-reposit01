@@ -5,17 +5,17 @@ output "secondoutput"{
 value=var.lastname
 }
 output "resto1"{
-value=var.cajun
+value=var.restaurant
 }
 output "resto2"{
-value=var.kee
+value=var.restauranta
 }
 output "resto3"{
-value=var.heritage
+value=var.restaurantb
 }
 output "resto4"{
-value=var.maxi
+value=var.restaurantc
 }
 output "resto5"{
-value=var.goodfood
+value=var.restaurantc
 }
