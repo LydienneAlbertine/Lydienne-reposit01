@@ -38,3 +38,7 @@ variable "restaurantd"{
 type=string
 default="goodfood"
 } 
+variable "millenium"{
+type=number
+default=2000
+}
