@@ -22,3 +22,9 @@ value=var.restaurantc
 output "listnumber"{
 value=var.millenium
 }
+output "trfl1"{
+value=var.truefalse
+}
+output "trfl2"{
+value=var.truefalse
+}
