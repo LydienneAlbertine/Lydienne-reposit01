@@ -60,5 +60,5 @@ default=["avengers","garfield","xmen","jumanji","johnwick"]
 }
 variable "icecream"{
 type=list(string)
-default=["caramel","oreo","vanille","chocolate","banana"]
+default=["caramel","oreo","vanilla","chocolate","banana"]
 }
