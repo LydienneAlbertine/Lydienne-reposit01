@@ -13,3 +13,6 @@ value=var.kee
 output "resto3"{
 value=var.heritage
 }
+output "resto4"{
+value=var.maxi
+}
