@@ -30,3 +30,7 @@ variable "heritage"{
 type=string
 default="restaurantb"
 }
+variable "maxi"{
+type=string
+default="restaurantc"
+}
