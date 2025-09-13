@@ -34,3 +34,7 @@ variable "maxi"{
 type=string
 default="restaurantc"
 }
+variable "goodfood"{
+type=string
+default="restaurantd"
+} 
