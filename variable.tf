@@ -26,3 +26,7 @@ variable "kee"{
 type=string
 default="restauranta"
 }
+variable "heritage"{
+type=string
+default="restaurantb"
+}
