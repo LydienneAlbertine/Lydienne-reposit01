@@ -46,7 +46,7 @@ variable "truefalse"{
 type=bool
 default=true
 }
-variable"truefalse"{
+variable"falsetrue"{
 type=bool
 default=false
 }
