@@ -18,23 +18,23 @@ variable "lastname"{
 type=string
 default="albertine" 
 }
-variable "cajun"{
+variable "restaurant"{
 type=string
-default="restaurant"
+default="cajun"
 }
-variable "kee"{
+variable "restauranta"{
 type=string
-default="restauranta"
+default="kee"
 }
-variable "heritage"{
+variable "restaurantb"{
 type=string
-default="restaurantb"
+default="heritage"
 }
-variable "maxi"{
+variable "restaurantc"{
 type=string
-default="restaurantc"
+default="maxi"
 }
-variable "goodfood"{
+variable "restaurantd"{
 type=string
-default="restaurantd"
+default="goodfood"
 } 
