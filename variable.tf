@@ -74,3 +74,6 @@ variable "travels"{
 type=list(string)
 default=["neworlean","australia","hawai","malibu","newzealand"]
 }
+variable "app_name"{
+type=string
+default="my_app"
