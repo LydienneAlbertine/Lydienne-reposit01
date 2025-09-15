@@ -49,4 +49,6 @@ value=var.travels
 output "application_name"{
 value=local.full_name
 }
+output "cvs_item"{
+value=join(",",var.items)
 }
