@@ -55,5 +55,5 @@ value=join(",",var.items)
 output "server_name_parts" {
   value = split("-", var.server_name)
 }
-output "cvs_item"{
-value=join(",",var.items)
+output "cvs_item1"{
+value=join(",",var.items1)
