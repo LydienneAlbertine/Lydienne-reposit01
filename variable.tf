@@ -90,3 +90,12 @@ variable "items1" {
   type    = list(string)
   default = ["football", "handball", "tennis", "running","volleyball"]
 }
+variable "items2" {
+  type    = list(string)
+  default = ["football", "handball", "tennis", "running","volleyball"]
+}
+
+variable "listmovies"{
+type=list(string)
+default=["badboys","avengers","superman","jumanji","airplane"]
+}
