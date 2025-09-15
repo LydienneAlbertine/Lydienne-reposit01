@@ -77,3 +77,8 @@ default=["neworlean","australia","hawai","malibu","newzealand"]
 variable "app_name"{
 type=string
 default="my_app"
+}
+variable "items" {
+  type    = list(string)
+  default = ["one", "two", "three"]
+}
