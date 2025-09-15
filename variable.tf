@@ -86,7 +86,7 @@ variable "server_name" {
   type    = string
   default = "app-prod-01"
 }
-variable "items" {
+variable "items1" {
   type    = list(string)
   default = ["football", "handball", "tennis", "running","volleyball"]
 }
