@@ -46,3 +46,7 @@ value=var.colors
 output "travellist"{
 value=var.travels
 }
+output "application_name"{
+value=local.full_name
+}
+}
