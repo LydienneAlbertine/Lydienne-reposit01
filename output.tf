@@ -57,3 +57,4 @@ output "server_name_parts" {
 }
 output "cvs_item1"{
 value=join(",",var.items1)
+}
