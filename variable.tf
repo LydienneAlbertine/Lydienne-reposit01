@@ -95,7 +95,7 @@ variable "items2" {
   default = ["football", "handball", "tennis", "running","volleyball"]
 }
 
-variable "movies"{
+variable "movies1"{
 type=list(string)
 default=["badboys","avengers","superman","jumanji","airplane"]
 }
