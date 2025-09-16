@@ -58,6 +58,6 @@ output "server_name_parts" {
 output "cvs_item1"{
 value=join(",",var.items1)
 }
-output "listmovies"{
-value=var.movies
+output "listmovies1"{
+value=var.movies1
 }
