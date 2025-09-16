@@ -62,8 +62,8 @@ output "listmovies1"{
 value=var.movies1
 }
 output "inception_upper"{
-value=upper(var.inception)
+value=upper(var.inception1)
 }
-output "INCEPTION_lower"{
-value=lower(var.inception)
+output "inception_lower"{
+value=lower(var.inception2)
 }
