@@ -101,5 +101,9 @@ default=["badboys","avengers","superman","jumanji","airplane"]
 }
 variable "movie" {
 type=string
-  default = "inception"
+  default = "inception1"
+}
+variable "movie2" {
+type=string
+  default = "inception2"
 }
