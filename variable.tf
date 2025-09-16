@@ -103,4 +103,3 @@ variable "movie" {
 type=string
   default = "inception"
 }
-}
