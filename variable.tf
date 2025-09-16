@@ -100,5 +100,7 @@ type=list(string)
 default=["badboys","avengers","superman","jumanji","airplane"]
 }
 variable "movie" {
-  default = "Inception"
+type=string
+  default = "inception"
+}
 }
