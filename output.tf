@@ -59,5 +59,5 @@ output "cvs_item1"{
 value=join(",",var.items1)
 }
 output "listmovies"{
-value=var.listmovies
+value=var.movies
 }
