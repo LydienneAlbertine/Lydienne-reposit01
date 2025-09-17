@@ -79,3 +79,6 @@ output "second_word" {
 output "mcit_student" {
   value = local.mcit_student # "mcit"
 }
+output "labels_upper" {
+ value = local.labels_upper
+}
