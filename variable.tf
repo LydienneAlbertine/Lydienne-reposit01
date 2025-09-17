@@ -116,3 +116,7 @@ variable "labels" {
  type    = set(string)
  default = ["alpha", "beta", "gamma"]
 }
+variable "usernames" {
+ type    = list(string)
+ default = ["alice", "bob", "carol"]
+}
