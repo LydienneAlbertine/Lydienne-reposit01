@@ -103,3 +103,6 @@ variable "movie" {
 type=string
   default = "inception"
 }
+variable "original" {
+  default = "Hello MCIT World"
+}
