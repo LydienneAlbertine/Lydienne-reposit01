@@ -112,3 +112,7 @@ variable "phrase" {
 variable "college" {
   default = "mymcitstudents"
 }
+variable "labels" {
+ type    = set(string)
+ default = ["alpha", "beta", "gamma"]
+}
