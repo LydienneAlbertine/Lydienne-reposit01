@@ -103,7 +103,3 @@ variable "movie" {
 type=string
   default = "inception"
 }
-variable "movie2" {
-type=string
-  default = "inception"
-}
