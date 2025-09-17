@@ -61,9 +61,9 @@ value=join(",",var.items1)
 output "listmovies1"{
 value=var.movies1
 }
-output "inception_upper"{
-value=upper(var.inception1)
+output "movie_in_uppercase"{
+value=local.movie_upper
 }
-output "inception_lower"{
-value=lower(var.inception2)
+output "movie_in_lowercase"{
+value=local.movie_lower
 }
