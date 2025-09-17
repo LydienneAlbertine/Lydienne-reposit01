@@ -13,7 +13,6 @@ locals {
 }
 locals {
   second_word = substr(var.phrase, 9, 5) # start at index 9, length 5
-}  
 }
 locals {
   code_student = substr(var.phrase, 2, 4) # start at index 2, length 4
