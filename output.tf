@@ -76,6 +76,6 @@ output "first_word" {
 output "second_word" {
   value = local.second_word # "Movie"
 }
-output "code_student" {
-  value = local.code_student # "mcit"
+output "mcit_student" {
+  value = local.mcit_student # "mcit"
 }
