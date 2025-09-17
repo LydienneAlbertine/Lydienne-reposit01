@@ -67,3 +67,6 @@ value=local.movie_upper
 output "movie_in_lowercase"{
 value=local.movie_lower
 }
+output "replaced_string" {
+  value = local.replaced 
+}
