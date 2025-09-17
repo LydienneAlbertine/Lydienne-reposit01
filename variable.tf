@@ -109,3 +109,6 @@ variable "original" {
 variable "phrase" {
   default = "InceptionMovie"
 }
+variable "phraseok" {
+  default = "mymcitstudents"
+}
