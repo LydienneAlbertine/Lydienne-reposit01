@@ -73,3 +73,6 @@ output "replaced_string" {
 output "first_word" {
   value = local.first_word # "Inception"
 }
+output "second_word" {
+  value = local.second_word # "movie"
+}
