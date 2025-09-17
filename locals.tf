@@ -17,6 +17,3 @@ locals {
 locals {
   mcit_student = substr(var.college, 2, 4) # start at index 2, length 4
 } 
-locals {
- labels_upper = toset([for s in var.labels : upper(s)])
-}
