@@ -11,4 +11,6 @@ locals {
 locals {
   first_word = substr(var.phrase, 0, 9) # start at index 0, length 9
 }
-  
+locals {
+  second_word = substr(var.phrase, 9, 5) # start at index 9, length 5
+}  
