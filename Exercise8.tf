@@ -4,9 +4,6 @@ variable "names_hello" {
   default = ["Alice", "Bob", "Carol"]
 }
 locals {
-  greetings = []
-}
-locals {
   greetings = flatten([
     for n in var.names : [ "Hello ${n}" ]
   ])
