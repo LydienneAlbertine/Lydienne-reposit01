@@ -9,5 +9,5 @@ locals {
   ])
 }
 output "append_hello_name" {
-  value = local.greetings
+  value = local.hello
 }
