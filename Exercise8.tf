@@ -8,6 +8,6 @@ locals {
     for n in var.names_hello : [ "Hello ${n}" ]
   ])
 }
-output "greetings" {
+output "append_hello_name" {
   value = local.greetings
 }
