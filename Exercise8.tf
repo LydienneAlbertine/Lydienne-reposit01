@@ -5,7 +5,7 @@ variable "names_hello" {
 }
 locals {
   greetings = flatten([
-    for n in var.names : [ "Hello ${n}" ]
+    for n in var.names_hello : [ "Hello ${n}" ]
   ])
 }
 output "greetings" {
