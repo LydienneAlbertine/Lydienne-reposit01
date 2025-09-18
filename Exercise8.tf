@@ -1,5 +1,5 @@
 # Append Hello before each name
-variable "names" {
+variable "names_hello" {
   type    = list(string)
   default = ["Alice", "Bob", "Carol"]
 }
