@@ -1,3 +1,4 @@
+# Put a list of things with an arrow symbol
 variable "activities" {
   default = ["eat", "sleep", "code", "repeat"]
 }
