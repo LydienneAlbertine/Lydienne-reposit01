@@ -10,5 +10,5 @@ variable "hotel" {
   default = "Marriott"
 }
 output "hotel_replaced" {
-  value = replace(var.hotel, "[aeiou]", "*")
+  value = regexreplace(var.hotel, "[aeiou]", "*")
 }
