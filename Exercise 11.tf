@@ -21,13 +21,13 @@ locals {
 output "masked_word" {
   value = local.replace
 }
-variable "hotels" {
+variable "hotels2" {
   default = ["Hilton", "Sheraton", "Marriott"]
 }
 locals {
-  reversed_hotels = [
-    for h in var.hotels : join("", reverse(split("", h))) ]
+  reversed_hotels2 = [
+    for h in var.hotels2 : join("", reverse(split("", h))) ]
 }
-output "reversed_hotels" {
-  value = local.reversed_hotels
+output "reversed_hotels2" {
+  value = local.reversed_hotels2
 }
