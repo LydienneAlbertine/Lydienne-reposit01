@@ -7,10 +7,18 @@ output "replace_burger" {
 }
 # Replace a vowel with this axterix symbol
 
-variable "hotel" {
+variable "word" {
   default = "Marriott"
 }
 
-output "hotel_masked" {
-  value = replace(replace(replace(replace(replace(var.hotel, "a",""), "e",""), "i",""), "o",""), "u","*")
+locals {
+  vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+  replaced = join("", [
+    for char in split("", var.word) :
+    contains(local.vowels, char) ? "*" : char
+  ])
+}
+
+output "masked_word" {
+  value = local.replaced
 }
