@@ -6,9 +6,11 @@ output "replace_burger" {
  value = replace("burger", "bur", "cheese")
 }
 # Replace a vowel with this axterix symbol
+
 variable "hotel" {
   default = "Marriott"
 }
+
 output "hotel_masked" {
-  value = replace("Marriott, "a","i","o" "*")
+  value = regexreplace(var.hotel, "[aeiou]", "*")
 }
