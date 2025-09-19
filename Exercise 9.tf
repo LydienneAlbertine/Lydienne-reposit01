@@ -1,3 +1,4 @@
+# Put upper on only one word in a list of many
 variable "hotels" {
   default = ["Marriott", "Hilton", "Sheraton", "Hyatt"]
 }
