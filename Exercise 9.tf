@@ -1,9 +1,14 @@
-variable "hotels_Hyatt" {
- default = ["Marriott", "Hilton", "Sheraton", "Hyatt"]
+variable "hotels" {
+  default = ["Marriott", "Hilton", "Sheraton", "Hyatt"]
 }
+
 locals {
- hotels_Hyatt_upper = toset([for s in var.hotels_hyatt : upper(s)])
+  formatted_hotels = [
+    for h in var.hotels :
+    (h == "Hyatt" ? upper(h) : h)
+  ]
 }
-output "hotels_Hyatt_upper" {
- value = local.hotel_hyatt_upper
+
+output "formatted_hotels" {
+  value = local.formatted_hotels
 }
