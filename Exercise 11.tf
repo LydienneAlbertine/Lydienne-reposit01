@@ -5,9 +5,9 @@ variable "foods" {
 output "replace_burger" {
  value = replace("burger", "bur", "cheese")
 }
-variable "Marriott" {
- default = ["pizza", "burger", "sushi", "tacos"]
+variable "replace_Marriott" {
+ default = ["Marriott"]
 }
 output "replace_Marriott" {
- value = replace("Marriott", "M*rr**tt")
+ value = replace_Marriott("Marriott", → "M*rr**tt")
 }
