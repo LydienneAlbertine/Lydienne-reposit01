@@ -24,10 +24,21 @@ output "masked_word" {
 variable "hotels2" {
   default = ["Hilton", "Sheraton", "Marriott"]
 }
+# Begin with the two first letters of each word
+
 locals {
   reversed_hotels2 = [
     for h in var.hotels2 : join("", reverse(split("", h))) ]
 }
 output "reversed_hotels2" {
   value = local.reversed_hotels2
+}
+variable "hotels3" {
+  default = ["Hilton", "Marriott", "Sheraton", "Hyatt"]
+}
+locals {
+  hotel2_short = [for h in var.hotels2 : substr(h, 0, 2) ]
+}
+output "short_hotels2" {
+  value = local.hotel2_short
 }
