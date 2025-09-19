@@ -6,3 +6,4 @@ locals {
 }
 output "hotel_upper" {
  value = local.hotel_hyatt_upper
+}
