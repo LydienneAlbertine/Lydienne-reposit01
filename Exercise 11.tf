@@ -5,9 +5,10 @@ variable "foods" {
 output "replace_burger" {
  value = replace("burger", "bur", "cheese")
 }
-variable "replace_Marriott" {
- default = ["Marriott"]
+# Replace a vowel with this axterix symbol
+variable "hotel" {
+  default = "Marriott"
 }
-output "replace_Marriott" {
- value = replace_Marriott("Marriott", → "M*rr**tt")
+output "hotel_replaced" {
+  value = replace(var.hotel, "[aeiou]", "*")
 }
