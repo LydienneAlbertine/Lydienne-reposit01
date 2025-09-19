@@ -10,15 +10,14 @@ output "replace_burger" {
 variable "word" {
   default = "Marriott"
 }
-
 locals {
   vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
-  replaced = join("", [
+  replace = join("", [
     for char in split("", var.word) :
     contains(local.vowels, char) ? "*" : char
   ])
 }
 
 output "masked_word" {
-  value = local.replaced
+  value = local.replace
 }
