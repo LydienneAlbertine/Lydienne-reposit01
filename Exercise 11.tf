@@ -10,5 +10,5 @@ variable "hotel" {
   default = "Marriott"
 }
 output "hotel_masked" {
-  value = join("", [for c in split("", var.hotel) : contains(["a","e","i","o","u"], c) ? "*" : c])
+  value = replace("Marriott, "a","i","o" "*")
 }
