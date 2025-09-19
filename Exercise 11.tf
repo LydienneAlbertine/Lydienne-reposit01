@@ -9,6 +9,6 @@ output "replace_burger" {
 variable "hotel" {
   default = "Marriott"
 }
-output "hotel_replaced" {
-  value = regexreplace(var.hotel, "[aeiou]", "*")
+output "hotel_masked" {
+  value = join("", [for c in split("", var.hotel) : contains(["a","e","i","o","u"], c) ? "*" : c])
 }
