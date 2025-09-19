@@ -1,3 +1,4 @@
+# Replace a symbol or a word
 variable "foods" {
  default = ["pizza", "burger", "sushi", "tacos"]
 }
