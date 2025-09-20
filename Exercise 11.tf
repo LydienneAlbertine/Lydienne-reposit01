@@ -42,12 +42,6 @@ locals {
 output "short_hotels2" {
   value = local.hotel2_short
 }
-# variable "foods" {
-
-  default = ["Pizza", "Burger", "Sushi", "Tacos"]
-
-}
-
 # Count total characters of all foods combined
  variable "foods3" {
   default = ["Pizza", "Burger", "Sushi", "Tacos"]
