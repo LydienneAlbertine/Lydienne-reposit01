@@ -54,11 +54,12 @@ output "total_characters" {
   value = local.total_chars
 }
 # Abbreviation from first letters (ESCTP)
-variable "activities" {
+variable "activities2" {
   default = ["eat", "sleep", "code", "travel", "play"]
 }
 locals {
   abbreviation = join("", [for a in var.activities : substr(a, 0, 1)])
 }
-output "activities_abbr" {
+output "activities2_abbr" {
   value = local.abbreviation
+}
