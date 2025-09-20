@@ -24,18 +24,6 @@ output "masked_word" {
 variable "hotels2" {
   default = ["Hilton", "Sheraton", "Marriott"]
 }
-variable "activities" {
-  default = ["eat", "sleep", "code", "travel", "play"]
-}
-
-locals {
-  abbreviation = join("", [
-    for a in var.activities : substr(a, 0, 1)
-  ])
-}
-output "activities_abbr" {
-  value = local.abbreviation
-}
 # Begin with the two first letters of each word
 
 locals {
@@ -65,3 +53,12 @@ locals {
 output "total_characters" {
   value = local.total_chars
 }
+# Abbreviation from first letters (ESCTP)
+variable "activities" {
+  default = ["eat", "sleep", "code", "travel", "play"]
+}
+locals {
+  abbreviation = join("", [for a in var.activities : substr(a, 0, 1)])
+}
+output "activities_abbr" {
+  value = local.abbreviation
