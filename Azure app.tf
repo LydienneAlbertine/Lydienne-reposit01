@@ -24,20 +24,56 @@ variable "plan1_sku_app1" {
  type    = string
  default = "B2"
 }
-variable "project_webapp2" {
-  default = ["app2", "app3", "app4", "app5"]
+variable "project_app2" {
+ type    = string
+ default = "webapp2"
+}
+variable "location2" {
+ type    = string
+ default = "canadacentral"
+}
+# small-but-real SKU (B11 is cheap; P1v3 is production)
+variable "plan2_sku_app2" {
+ type    = string
+ default = "B3"
+}
+variable "project_app3" {
+ type    = string
+ default = "webapp3"
+}
+variable "location3" {
+ type    = string
+ default = "canadacentral"
+}
+# small-but-real SKU (B4 is cheap; P1v3 is production)
+variable "plan3_sku_app3" {
+ type    = string
+ default = "B4"
+}
+variable "project_app4" {
+ type    = string
+ default = "webapp4"
+}
+variable "location4" {
+ type    = string
+ default = "canadacentral"
+}
+# small-but-real SKU (B5 is cheap; P1v3 is production)
+variable "plan4_sku_app4" {
+ type    = string
+ default = "B5"
+}
+variable "project_app5" {
+ type    = string
+ default = "webapp5"
+}
+variable "location5" {
+ type    = string
+ default = "canadacentral"
+}
+# small-but-real SKU (B6 is cheap; P1v3 is production)
+variable "plan5_sku_app5" {
+ type    = string
+ default = "B6"
 }
 
-resource "azurerm_resource_group" "rg2" {
-  name     = "${var.project_webapps}-rg2"
-  location = var.location2
-}
-
-resource "azurerm_service_plan" "plan2" {
-  name                = "${var.project_webapp2}-plan2"
-  location            = azurerm_resource_group.rg2.location
-  resource_group_name = azurerm_resource_group.rg2.name
-
-  os_type  = "Linux"
-  sku_name = var.plan2_sku_app2
-}
