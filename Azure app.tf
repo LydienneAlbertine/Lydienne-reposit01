@@ -24,7 +24,7 @@ variable "plan1_sku_app1" {
  type    = string
  default = "B2"
 }
-variable "project_webapps" {
+variable "project_webapp2" {
   default = ["app2", "app3", "app4", "app5"]
 }
 
@@ -34,7 +34,7 @@ resource "azurerm_resource_group" "rg2" {
 }
 
 resource "azurerm_service_plan" "plan2" {
-  name                = "${var.project_webapps}-plan2"
+  name                = "${var.project_webapp2}-plan2"
   location            = azurerm_resource_group.rg2.location
   resource_group_name = azurerm_resource_group.rg2.name
 
