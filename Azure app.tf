@@ -22,7 +22,7 @@ variable "location1" {
 # small-but-real SKU (B11 is cheap; P1v3 is production)
 variable "plan1_sku_app1" {
  type    = string
- default = "B11"
+ default = "B2"
 }
 variable "project_app2" {
  type    = string
