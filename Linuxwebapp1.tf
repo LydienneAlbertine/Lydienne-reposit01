@@ -3,8 +3,8 @@ resource "azurerm_resource_group" "rg1" {
  location = var.location1
 }
 
-resource "azurerm_service_plan" "plan" {
- name                = "${var.project_app1}-plan"
+resource "azurerm_service_plan1" "plan1" {
+ name                = "${var.project_app1}-plan1"
  location            = azurerm_resource_group.rg1.location1
  resource_group_name = azurerm_resource_group.rg1.name
 
@@ -16,7 +16,7 @@ resource "azurerm_linux_web_app" "app1" {
  name                = "${var.project_app1}-app1"
  location            = azurerm_resource_group.rg1.location1
  resource_group_name = azurerm_resource_group.rg1.name
- service_plan_id     = azurerm_service_plan.plan.id
+ service_plan_id     = azurerm_service_plan1.plan1.id
 
  https_only = true
 
