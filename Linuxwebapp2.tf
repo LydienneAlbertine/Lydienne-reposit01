@@ -2,18 +2,16 @@ resource "azurerm_resource_group" "rg2" {
  name     = "${var.project_app2}-rg2"
  location = var.location2
 }
-
 resource "azurerm_service_plan" "plan2" {
- name                = "${var.project_app1}-plan2"
+ name                = "${var.project_app2}-plan2"
  location            = azurerm_resource_group.rg2.location
  resource_group_name = azurerm_resource_group.rg2.name
 
  os_type = "Linux"
  sku_name = var.plan2_sku_app2
 }
-
 resource "azurerm_linux_web_app" "app2" {
- name                = "${var.project_app1}-app2"
+ name                = "${var.project_app2}-app2"
  location            = azurerm_resource_group.rg2.location
  resource_group_name = azurerm_resource_group.rg2.name
  service_plan_id     = azurerm_service_plan.plan2.id
