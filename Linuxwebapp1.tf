@@ -9,7 +9,7 @@ resource "azurerm_service_plan" "plan1" {
  resource_group_name = azurerm_resource_group.rg1.name
 
  os_type = "Linux"
- sku_name = var.plan_sku_app1
+ sku_name = var.plan1_sku_app1
 }
 
 resource "azurerm_linux_web_app" "app1" {
