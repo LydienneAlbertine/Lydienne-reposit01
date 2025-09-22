@@ -63,3 +63,17 @@ locals {
 output "activities2_abbr" {
   value = local.abbreviation
 }
+# Abbreviation with the first letter of each words
+variable "activities" {
+  default = ["eat", "sleep", "code", "travel", "play"]
+}
+
+locals {
+  abbreviation = join("", [
+    for a in var.activities : substr(a, 0, 1)
+  ])
+}
+
+output "activities_abbr" {
+  value = local.abbreviation
+}
