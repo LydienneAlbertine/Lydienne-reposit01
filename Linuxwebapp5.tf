@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg5" {
  name     = "${var.project_app5}-rg5"
- location = var.location1
+ location = var.location5
 }
 
 resource "azurerm_service_plan" "plan5" {
