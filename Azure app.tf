@@ -37,16 +37,4 @@ variable "plan1_sku_app2" {
  type    = string
  default = "B2"
 }
-variable "project_app3" {
- type    = string
- default = "webapp3"
-}
-variable "location3" {
- type    = string
- default = "canadacentral"
-}
-# small-but-real SKU (B1 is cheap; P1v3 is production)
-variable "plan1_sku_app3" {
- type    = string
- default = "B3"
-}
+
