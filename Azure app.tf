@@ -15,7 +15,7 @@ variable "project_app1" {
  type    = string
  default = "webapp1"
 }
-variable "location" {
+variable "location1" {
  type    = string
  default = "canadacentral"
 }
@@ -28,7 +28,7 @@ variable "project_app2" {
  type    = string
  default = "webapp2"
 }
-variable "location" {
+variable "location2" {
  type    = string
  default = "canadacentral"
 }
@@ -41,7 +41,7 @@ variable "project_app3" {
  type    = string
  default = "webapp3"
 }
-variable "location" {
+variable "location3" {
  type    = string
  default = "canadacentral"
 }
