@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "rg1" {
 
 resource "azurerm_service_plan" "plan1" {
  name                = "${var.project_app1}-plan1"
- location            = azurerm_resource_group.rg1.location1
+ location            = azurerm_resource_group.rg1.location
  resource_group_name = azurerm_resource_group.rg1.name
 
  os_type = "Linux"
