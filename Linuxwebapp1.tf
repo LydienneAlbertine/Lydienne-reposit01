@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "rg1" {
  location = var.location1
 }
 
-resource "azurerm_service_plan1" "plan1" {
+resource "azurerm_service_plan" "plan1" {
  name                = "${var.project_app1}-plan1"
  location            = azurerm_resource_group.rg1.location1
  resource_group_name = azurerm_resource_group.rg1.name
