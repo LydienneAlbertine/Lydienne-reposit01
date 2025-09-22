@@ -1,4 +1,4 @@
-resource "azurerm_linux_web_app" "apps" {
+resource "azurerm_linux_web_app" "app2" {
   for_each            = toset(var.webapps)
 
   name                = "${var.project_app2}-${each.key}"
