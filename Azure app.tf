@@ -32,7 +32,7 @@ variable "location2" {
  type    = string
  default = "canadacentral"
 }
-# small-but-real SKU (B11 is cheap; P1v3 is production)
+# small-but-real SKU (B3 is cheap; P1v3 is production)
 variable "plan2_sku_app2" {
  type    = string
  default = "B3"
