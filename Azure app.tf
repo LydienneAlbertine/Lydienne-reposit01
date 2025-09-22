@@ -33,7 +33,7 @@ variable "location2" {
  default = "canadacentral"
 }
 # small-but-real SKU (B1 is cheap; P1v3 is production)
-variable "plan1_sku_app2" {
+variable "plan2_sku_app2" {
  type    = string
  default = "B2"
 }
