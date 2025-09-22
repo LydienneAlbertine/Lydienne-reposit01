@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "rg1" {
- name     = "${var.project_app1}-rg"
+ name     = "${var.project_app1}-rg1"
  location = var.location1
 }
 
@@ -14,9 +14,9 @@ resource "azurerm_service_plan" "plan1" {
 
 resource "azurerm_linux_web_app" "app1" {
  name                = "${var.project_app1}-app1"
- location            = azurerm_resource_group.rg1.location1
+ location            = azurerm_resource_group.rg1.location
  resource_group_name = azurerm_resource_group.rg1.name
- service_plan_id     = azurerm_service_plan1.plan1.id
+ service_plan_id     = azurerm_service_plan.plan1.id
 
  https_only = true
 
