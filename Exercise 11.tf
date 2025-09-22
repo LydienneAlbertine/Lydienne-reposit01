@@ -77,3 +77,21 @@ locals {
 output "activities_abbr" {
   value = local.abbreviations
 }
+variable "foods" {
+  default = ["Pizza", "Burger", "Sushi", "Tacos", "Pasta"]
+}
+
+# Créer une map avec longueur => mot
+locals {
+  food_lengths = { for f in var.foods : f => length(f) }
+}
+
+# Trouver la longueur max
+locals {
+  max_length = max([for l in local.food_lengths : l]...)
+}
+
+# Trouver le mot qui correspond à cette longueur
+output "longest_food" {
+  value = [for f, l in local.food_lengths : f if l == local.max_length][0]
+}
