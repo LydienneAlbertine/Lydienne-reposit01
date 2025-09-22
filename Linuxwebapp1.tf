@@ -1,21 +1,21 @@
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "rg1" {
  name     = "${var.project_app1}-rg"
- location = var.location
+ location = var.location1
 }
 
 resource "azurerm_service_plan" "plan" {
  name                = "${var.project_app1}-plan"
- location            = azurerm_resource_group.rg.location
- resource_group_name = azurerm_resource_group.rg.name
+ location            = azurerm_resource_group.rg1.location1
+ resource_group_name = azurerm_resource_group.rg1.name
 
  os_type = "Linux"
  sku_name = var.plan_sku_app1
 }
 
-resource "azurerm_linux_web_app" "app" {
- name                = "${var.project_app1}-app"
- location            = azurerm_resource_group.rg.location
- resource_group_name = azurerm_resource_group.rg.name
+resource "azurerm_linux_web_app" "app1" {
+ name                = "${var.project_app1}-app1"
+ location            = azurerm_resource_group.rg1.location1
+ resource_group_name = azurerm_resource_group.rg1.name
  service_plan_id     = azurerm_service_plan.plan.id
 
  https_only = true
