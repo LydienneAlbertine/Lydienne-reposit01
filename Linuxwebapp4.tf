@@ -13,7 +13,7 @@ resource "azurerm_service_plan" "plan4" {
 }
 
 resource "azurerm_linux_web_app" "app4" {
- name                = "${var.project_app4-app4"
+ name                = "${var.project_app4}-app4"
  location            = azurerm_resource_group.rg4.location
  resource_group_name = azurerm_resource_group.rg4.name
  service_plan_id     = azurerm_service_plan.plan4.id
