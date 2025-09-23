@@ -45,10 +45,10 @@ variable "location3" {
  type    = string
  default = "canadacentral"
 }
-# small-but-real SKU (B4 is cheap; P1v3 is production)
+# small-but-real SKU (B3 is cheap; P1v3 is production)
 variable "plan3_sku_app3" {
  type    = string
- default = "B4"
+ default = "B3"
 }
 variable "project_app4" {
  type    = string
@@ -58,10 +58,10 @@ variable "location4" {
  type    = string
  default = "canadacentral"
 }
-# small-but-real SKU (B5 is cheap; P1v3 is production)
+# small-but-real SKU (B3 is cheap; P1v3 is production)
 variable "plan4_sku_app4" {
  type    = string
- default = "B5"
+ default = "B3"
 }
 variable "project_app5" {
  type    = string
@@ -71,9 +71,9 @@ variable "location5" {
  type    = string
  default = "canadacentral"
 }
-# small-but-real SKU (B6 is cheap; P1v3 is production)
+# small-but-real SKU (B3 is cheap; P1v3 is production)
 variable "plan5_sku_app5" {
  type    = string
- default = "B6"
+ default = "B3"
 }
 
