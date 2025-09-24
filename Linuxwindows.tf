@@ -1,3 +1,18 @@
+variable "webapp_names" {
+  type = list(string)
+  default = [
+    "wa-canada-mapleleaf",
+    "wa-canada-hockey",
+    "wa-canada-poutine",
+    "wa-canada-mountie",
+    "wa-canada-niagara",
+    "wa-canada-timhortons",
+    "wa-canada-beavertail",
+    "wa-canada-loonie",
+    "wa-canada-canoe",
+    "wa-canada-igloo"
+  ]
+}
 # Groupe de ressources
 resource "azurerm_resource_group" "mcitazurerm" {
   name     = "septemberazurerm"
