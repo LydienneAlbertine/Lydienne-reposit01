@@ -41,17 +41,17 @@ resource "azurerm_windows_web_app" "app7" {
    SCM_DO_BUILD_DURING_DEPLOYMENT      = "true"
  }
 }
-variable "webapp_app1" {
+variable "webapp_app7" {
   type    = list(string)
   default = ["app1", "app2", "app3", "app4", "app5"]
 }
 
-resource "azurerm_windows_resource_group" "mcitazurerm" {
+resource "azurerm_windows_resource_group" "mcitazurerm7" {
   name     = "septemberazurerm"
   location = "Canada Central"
 }
 
-resource "azurerm_service_plan" "mcitsplan" {
+resource "azurerm_service_plan" "mcitsplan7" {
   name                = "mcitserviceplan"
   resource_group_name = azurerm_resource_group.mcitazurerm.name
   location            = azurerm_resource_group.mcitazurerm.location
