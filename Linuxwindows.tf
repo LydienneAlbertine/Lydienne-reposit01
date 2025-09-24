@@ -24,7 +24,9 @@ resource "azurerm_windows_web_app" "example" {
   resource_group_name = azurerm_resource_group.rg6.name
   service_plan_id     = azurerm_service_plan.example[each.key].id
 
-  site_config {}
+  site_config {
+always_on=true
+  }
 }
 output "webapps6" {
   value = {
