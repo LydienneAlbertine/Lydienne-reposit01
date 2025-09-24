@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "mcitazurerm" {
 }
 
 # Service Plan (partagé entre toutes les apps)
-resource "azurerm_service_plan" "mcitsplan" {
+resource "azurerm_service_plan" "mcitsplanok" {
   name                = "mcitserviceplan"
   resource_group_name = azurerm_resource_group.mcitazurerm.name
   location            = azurerm_resource_group.mcitazurerm.location
@@ -18,7 +18,7 @@ resource "azurerm_linux_web_app" "mcitwebapps" {
   name                = var.webapp_names[count.index]
   location            = azurerm_resource_group.mcitazurerm.location
   resource_group_name = azurerm_resource_group.mcitazurerm.name
-  service_plan_id     = azurerm_service_plan.mcitsplan.id
+  service_plan_id     = azurerm_service_plan.mcitsplanok.id
 
   site_config {
     application_stack {
