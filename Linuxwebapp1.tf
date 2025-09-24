@@ -41,22 +41,4 @@ resource "azurerm_linux_web_app" "app1" {
    SCM_DO_BUILD_DURING_DEPLOYMENT      = "true"
  }
 }
-variable "webapp_app1" {
-  type    = list(string)
-  default = ["app1", "app2", "app3", "app4", "app5"]
-}
-
-resource "azurerm_windows_resource_group" "mcitazurerm" {
-  name     = "septemberazurerm"
-  location = "Canada Central"
-}
-
-resource "azurerm_service_plan" "mcitsplan" {
-  name                = "mcitserviceplan"
-  resource_group_name = azurerm_resource_group.mcitazurerm.name
-  location            = azurerm_resource_group.mcitazurerm.location
-  os_type             = "Linux"
-  sku_name            = "P1v2"
-}
-
 
