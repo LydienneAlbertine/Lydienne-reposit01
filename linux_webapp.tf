@@ -69,7 +69,10 @@ locals {
     for item in var.canada_items : item => item
   }
 }
-
+variable"canada_itemsok1"{
+type=list(string)
+default=["canada","food""wa-canada"]
+}
 resource "azurerm_linux_web_app" "canada_apps_simple" {
   for_each            = local.canada_map_simple
   name                = "wa-canada-${each.value}"
