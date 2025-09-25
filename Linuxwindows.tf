@@ -36,8 +36,3 @@ resource "azurerm_linux_web_app" "mcitwebapps" {
 output "webapp_names" {
   value = azurerm_linux_web_app.mcitwebapps
 }
-
-# Output : longueurs des noms
-output "webapp_name_lengths" {
-  value = { for name, app in azurerm_linux_web_app.mcitwebapps : name => length(app.name) }
-}
