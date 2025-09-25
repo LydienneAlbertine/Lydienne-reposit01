@@ -71,7 +71,7 @@ locals {
 }
 variable"canada_itemsok1"{
 type=list(string)
-default=["canada","food","wa-canada"]
+default= var.canada_itemsok1
 }
 resource "azurerm_linux_web_app" "canada_apps_simple" {
   for_each            = local.canada_map_simple
