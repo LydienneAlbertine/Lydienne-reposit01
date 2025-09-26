@@ -1,5 +1,5 @@
 # ⿡ Resource Group
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "rgwaf" {
   name     = "rg-waf-example"
   location = "Canada Central"
 }
