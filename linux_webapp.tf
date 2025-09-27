@@ -69,8 +69,9 @@ locals {
     for item in var.canada_itemsok1 : item => item
   }
 }
-variable"canada_itemsok1"{
-type=list(string)
+variable "canada_itemsok1" {
+  type    = list(string)
+  default = ["it1", "it2", "it3"]
 }
 resource "azurerm_linux_web_app" "canada_apps_simple" {
   for_each            = local.canada_map_simple
