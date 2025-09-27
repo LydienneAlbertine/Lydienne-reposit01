@@ -66,7 +66,7 @@ resource "azurerm_service_plan" "canada_linux_plan" {
 
 locals {
   canada_map_simple = {
-    for item in var.canada_itemsok1 : item => item
+    for item in var.canada_itemsok : item => item
   }
 }
 variable "canada_itemsok" {
