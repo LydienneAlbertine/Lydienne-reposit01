@@ -71,7 +71,7 @@ locals {
 }
 variable "canada_itemsok1" {
   type    = list(string)
-  default = ["it1", "it2", "it3"]
+  default = ["itemok1", "itemok2", "itemok3"]
 }
 resource "azurerm_linux_web_app" "canada_apps_simple" {
   for_each            = local.canada_map_simple
