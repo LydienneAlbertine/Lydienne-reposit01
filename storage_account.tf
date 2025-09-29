@@ -31,7 +31,6 @@ variable "service_endpoints" {
   type    = list(string)
   default = ["Microsoft.Sql", "Microsoft.Storage"]
 }
-
 variable "ip_rules" {
   type    = list(string)
   default = ["100.0.0.1"]
@@ -58,13 +57,11 @@ resource "azurerm_subnet" "lydienne_net" {
 
 resource "azurerm_storage_account" "lydienne_account" {
   for_each = var.storage_account_lydienne
-
   name                     = each.value
   resource_group_name      = azurerm_resource_group.lydienne.name
   location                 = azurerm_resource_group.lydienne.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-
   network_rules {
     default_action             = "Deny"
     ip_rules                   = var.ip_rules
