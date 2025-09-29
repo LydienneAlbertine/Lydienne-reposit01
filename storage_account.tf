@@ -67,6 +67,6 @@ resource "azurerm_storage_account" "lydienne_account" {
     ip_rules                   = var.ip_rules
     virtual_network_subnet_ids = [azurerm_subnet.lydienne_net.id]
   }
-  tags = {
-  environment = "staging"
+tags = {
+environment = "staging"
 }
