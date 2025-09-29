@@ -68,6 +68,5 @@ resource "azurerm_storage_account" "lydienne_account" {
     virtual_network_subnet_ids = [azurerm_subnet.lydienne_net.id]
   }
   tags = {
-    environment = "staging"
-  }
+  environment = "staging"
 }
