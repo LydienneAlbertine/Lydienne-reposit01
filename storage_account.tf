@@ -54,7 +54,6 @@ resource "azurerm_subnet" "lydienne_net" {
   address_prefixes     = var.subnet_prefix
   service_endpoints    = var.service_endpoints
 }
-
 resource "azurerm_storage_account" "lydienne_account" {
   for_each = var.storage_account_lydienne
   name                     = each.value
