@@ -2,10 +2,9 @@ variable "location_storage" {
   type    = string
   default = "West Europe"
 }
-variable "storage_account_lydienne"
+variable "storage_account_lydienne" {
 type = list (string)
-default = {
-s1= "storage_account_lydienne1"
+default = s1= "storage_account_lydienne1"
 s2= "storage_account_lydienne2"
 s3= "storage_account_lydienne3"
 s4= "storage_account_lydienne4"
