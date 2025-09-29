@@ -3,8 +3,9 @@ variable "location_storage" {
   default = "West Europe"
 }
 variable "storage_account_lydienne" {
-type = list (string)
-default = s1= "storage_account_lydienne1"
+type = map (string)
+default = {
+s1= "storage_account_lydienne1"
 s2= "storage_account_lydienne2"
 s3= "storage_account_lydienne3"
 s4= "storage_account_lydienne4"
@@ -13,8 +14,8 @@ s6= "storage_account_lydienne6"
 s7= "storage_account_lydienne7"
 s8= "storage_account_lydienne8"
 s9= "storage_account_lydienne9"
-s10-= "storage_account_lydienne10"
- }
+s10= "storage_account_lydienne10"
+}
 }
 variable "azurerm_virtual_network_lydienne1"  {
   name                = "virtnetlydienne"
