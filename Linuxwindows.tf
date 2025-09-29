@@ -35,4 +35,5 @@ resource "azurerm_linux_web_app" "mcitwebapps" {
 # Output : noms des web apps
 output "webapp_names" {
   value = azurerm_linux_web_app.mcitwebapps
+ sensitive = true
 }
