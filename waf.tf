@@ -1,112 +1,100 @@
-# ⿡ Resource Group
 resource "azurerm_resource_group" "rgwaf" {
-  name     = "rg-waf-example"
-  location = "Canada Central"
+  name     = "example-rg"
+  location = "West Europe"
 }
-#  Virtual Network + Subnet
-resource "azurerm_virtual_network" "vnet" {
-  name                = "vnet-waf"
-  address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.rgwaf.location
-  resource_group_name = azurerm_resource_group.rgwaf.name
-}
-resource "azurerm_subnet" "subnet" {
-  name                 = "subnet-waf"
-  resource_group_name  = azurerm_resource_group.rgwaf.name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.1.0/24"]
-}
-# Public IP
-resource "azurerm_public_ip" "pip" {
-  name                = "pip-waf"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rgwaf.name
-  allocation_method   = "Static"
-  sku                 = "Standard"
-}
-# ⿤ WAF Policy
-resource "azurerm_web_application_firewall_policy" "waf_policy" {
-  name                = "example-waf-policy"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
 
-  # Règle personnalisée pour bloquer une IP spécifique
+resource "azurerm_web_application_firewall_policy" "rgwaf" {
+  name                = "example-wafpolicy"
+  resource_group_name = azurerm_resource_group.rgwaf.name
+  location            = azurerm_resource_group.rgwaf.location
+
   custom_rules {
-    name      = "block_bad_ip"
+    name      = "Rule1"
     priority  = 1
     rule_type = "MatchRule"
-    action    = "Block"
 
     match_conditions {
       match_variables {
         variable_name = "RemoteAddr"
       }
-      operator          = "IPMatch"
+
+      operator           = "IPMatch"
       negation_condition = false
-      match_values      = ["10.0.0.1"]
+      match_values       = ["192.168.1.0/24", "10.0.0.0/24"]
     }
+
+    action = "Block"
   }
-  # Règles OWASP standard
+
+  custom_rules {
+    name      = "Rule2"
+    priority  = 2
+    rule_type = "MatchRule"
+
+    match_conditions {
+      match_variables {
+        variable_name = "RemoteAddr"
+      }
+
+      operator           = "IPMatch"
+      negation_condition = false
+      match_values       = ["192.168.1.0/24"]
+    }
+
+    match_conditions {
+      match_variables {
+        variable_name = "RequestHeaders"
+        selector      = "UserAgent"
+      }
+
+      operator           = "Contains"
+      negation_condition = false
+      match_values       = ["Windows"]
+    }
+
+    action = "Block"
+  }
+
+  policy_settings {
+    enabled                     = true
+    mode                        = "Prevention"
+    request_body_check          = true
+    file_upload_limit_in_mb     = 100
+    max_request_body_size_in_kb = 128
+  }
+
   managed_rules {
+    exclusion {
+      match_variable          = "RequestHeaderNames"
+      selector                = "x-company-secret-header"
+      selector_match_operator = "Equals"
+    }
+    exclusion {
+      match_variable          = "RequestCookieNames"
+      selector                = "too-tasty"
+      selector_match_operator = "EndsWith"
+    }
+
     managed_rule_set {
       type    = "OWASP"
       version = "3.2"
+      rule_group_override {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule {
+          id      = "920300"
+          enabled = true
+          action  = "Log"
+        }
+
+        rule {
+          id      = "920440"
+          enabled = true
+          action  = "Block"
+        }
+      }
     }
   }
 }
-# ⿥ Application Gateway avec WAF Policy attachée
-resource "azurerm_application_gateway" "appgw" {
-  name                = "appgw-waf-example"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  sku {
-    name     = "WAF_v2"
-    tier     = "WAF_v2"
-    capacity = 2
-  }
-  gateway_ip_configuration {
-    name      = "gatewayIpConfig"
-    subnet_id = azurerm_subnet.subnet.id
-  }
-frontend_port {
-    name = "httpPort"
-    port = 80
-  }
-
-  frontend_ip_configuration {
-    name                 = "publicFrontend"
-    public_ip_address_id = azurerm_public_ip.pip.id
-  }
-  backend_address_pool {
-    name = "defaultBackendPool"
-  }
-  backend_http_settings {
-    name                  = "defaultBackendHttpSettings"
-    cookie_based_affinity = "Disabled"
-    port                  = 80
-    protocol              = "Http"
-    request_timeout       = 20
-  }
-http_listener {
-    name                           = "listener"
-    frontend_ip_configuration_name = "publicFrontend"
-    frontend_port_name             = "httpPort"
-    protocol                       = "Http"
-  }
-  request_routing_rule {
-    name                       = "rule1"
-    rule_type                  = "Basic"
-    http_listener_name         = "listener"
-    backend_address_pool_name  = "defaultBackendPool"
-    backend_http_settings_name = "defaultBackendHttpSettings"
-  }
-  waf_configuration {
-    enabled                          = true
-    firewall_mode                     = "Prevention"  # ou "Detection"
-    web_application_firewall_policy_id = azurerm_web_application_firewall_policy.waf_policy.id
-  }
-}
-
 
 
 
