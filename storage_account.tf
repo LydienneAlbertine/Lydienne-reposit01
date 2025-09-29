@@ -18,11 +18,9 @@ s10= "storage_account_lydienne10"
 }
 }
 variable "azurerm_virtual_network_lydienne1"  {
-  name                = "virtnetlydienne"
-  address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.location_storage
-  resource_group_name = azurerm_resource_group_lydienne
-}
+type = string
+default      = ["10.0.0.0/16"]
+ 
 
 resource "azurerm_subnet" "lydienne_net" {
   name                 = "subnetname"
