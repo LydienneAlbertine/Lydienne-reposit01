@@ -18,7 +18,6 @@ s10= "storage_account_lydienne10"
 }
 }
 variable "azurerm_virtual_network_lydienne1"  {
-type = number
 default      = ["10.0.0.0/16"]
  }
 resource "azurerm_subnet" "lydienne_net" {
