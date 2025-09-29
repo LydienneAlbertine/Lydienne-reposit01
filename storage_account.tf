@@ -62,6 +62,7 @@ resource "azurerm_storage_account" "lydienne_account" {
   location                 = azurerm_resource_group.lydienne.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+}
   network_rules {
     default_action             = "Deny"
     ip_rules                   = var.ip_rules
