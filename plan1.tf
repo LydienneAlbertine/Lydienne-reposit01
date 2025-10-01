@@ -28,7 +28,9 @@ node_version = "18-lts"
 
 }
 
-# [Variable Block
+locals {
+documentation = <<EOT
+Variable Block
  
 variable "apps": Defines a variable called apps.
  
@@ -80,4 +82,6 @@ Three separate Linux Web Apps created automatically from the list:
 inovocb-api 
 riidoz-ui 
 gamecb-core 
-All three apps run on Linux + Node.js 18, inside the same plan and resource group.]
+All three apps run on Linux + Node.js 18, inside the same plan and resource group
+EOT
+}
