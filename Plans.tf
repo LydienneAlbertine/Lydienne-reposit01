@@ -15,6 +15,27 @@ os_type             = "Linux"
 sku_name            = each.value.sku
 worker_count        = each.value.worker_count
 }
+
+variable "plans1" {
+default = {
+lydienne1   = { sku = "B1", worker_count = 1 }
+lydienne2   = { sku = "P1v3", worker_count = 2 }
+lydienne3  = { sku = "S1", worker_count = 1 }
+lydienne4  = { sku = "P2v3", worker_count = 2 }
+lydienne5   = { sku = "S2", worker_count = 1 }
+  }
+}
+
+# Ressource pour créer 5 App Service Plans
+resource "azurerm_service_plan" "asp" {
+  for_each            = var.plans1
+  name                = "asp-${each.key}"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  os_type             = "Linux"
+  sku_name            = each.value.sku
+  worker_count        = each.value.worker_count
+}
  
 # Inside the Resource:
 # for_each = var.plans
