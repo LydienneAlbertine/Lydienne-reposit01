@@ -27,9 +27,9 @@ lydienne5   = { sku = "S2", worker_count = 1 }
 }
 
 # Ressource pour créer 5 App Service Plans
-resource "azurerm_service_plan" "asp" {
+resource "azurerm_service_plan" "asp1" {
   for_each            = var.plans1
-  name                = "asp-${each.key}"
+  name                = "asp1-${each.key}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = "Linux"
