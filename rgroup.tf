@@ -8,9 +8,9 @@ prod = { location = "Canada Central" }
 }
 
 # Création des resource groups avec for_each
-resource "azurerm_resource_group" "rglydienne" {
+resource "azurerm_resource_group" "1rg" {
 for_each = var.resource_groups
-name     = "rg_${each.key}"
+name     = "1rg_${each.key}"
 location = each.value.location
 }
 
