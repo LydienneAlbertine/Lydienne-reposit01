@@ -17,39 +17,36 @@ worker_count        = each.value.worker_count
 }
  
 # Inside the Resource:
-for_each = var.plans
-Instead of creating just one service plan, Terraform will create one per key in var.plans (so one for dev and one for prod).
+# for_each = var.plans
+# Instead of creating just one service plan, Terraform will create one per key in var.plans (so one for dev and one for prod).
  
-In each iteration, each.key is the environment name (dev or prod),
+# In each iteration, each.key is the environment name (dev or prod),
  
-each.value is the object ({ sku = "...", worker_count = ... }).
-name = "asp-${each.key}"
+# each.value is the object ({ sku = "...", worker_count = ... }).
+# name = "asp-${each.key}"
 
-Sets the Azure resource name. It will dynamically become:
-asp-dev for the dev plan
+# Sets the Azure resource name. It will dynamically become: asp-dev for the dev plan /asp-prod for the prod plan
  
-asp-prod for the prod plan
- 
-sku_name = each.value.sku
+# sku_name = each.value.sku
 
-Gets the sku from the object defined in var.plans.
+# Gets the sku from the object defined in var.plans.
  
-For dev → "B1"
+# For dev → "B1"
  
-For prod → "P1v3"
+# For prod → "P1v3"
  
  
-worker_count = each.value.worker_count
+# worker_count = each.value.worker_count
 
-Gets the worker_count (number of workers) from the plan object.
+# Gets the worker_count (number of workers) from the plan object.
  
-For dev → 1
+# For dev → 1
  
-For prod → 2
+# For prod → 2
  
-Terraform will create two service plans automatically:
+# Terraform will create two service plans automatically:
  
-asp-dev (Linux, B1, 1 worker)
+# asp-dev (Linux, B1, 1 worker)
  
-asp-prod (Linux, P1v3, 2 workers)
+# asp-prod (Linux, P1v3, 2 workers)
  
