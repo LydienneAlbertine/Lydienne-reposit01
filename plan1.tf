@@ -3,7 +3,7 @@ variable "apps" {
 default = ["inovocb-api", "riidoz-ui", "gamecb-core"]
 }
  
-resource "azurerm_service_plan" "plan" {
+resource "azurerm_service_plan" "plan_lyd" {
 name                = "asp-shared"
 location            = azurerm_resource_group.rg.location
 resource_group_name = azurerm_resource_group.rg.name
@@ -11,7 +11,7 @@ os_type             = "Linux"
 sku_name            = "B1"
 }
  
-resource "azurerm_linux_web_app" "app" {
+resource "azurerm_linux_web_app" "applyd" {
 for_each          = toset(var.apps)
 name                = each.value
 location            = azurerm_resource_group.rg.location
