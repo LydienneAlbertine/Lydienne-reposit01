@@ -1,1 +1,16 @@
+# Définition des resource groups dans une map
+variable "resource_groups" {
+default = {
+dev  = { location = "Canada Central" }
+test = { location = "Canada Central" }
+prod = { location = "Canada Central" }
+  }
+}
+
+# Création des resource groups avec for_each
+resource "azurerm_resource_group" "rg" {
+for_each = var.resource_groups
+name     = "rg_${each.key}"
+location = each.value.location
+}
 
