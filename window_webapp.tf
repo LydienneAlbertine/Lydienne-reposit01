@@ -45,7 +45,7 @@ resource "azurerm_windows_web_app" "app" {
   name                = each.value.app_name       # must be globally unique
   location            = azurerm_resource_group.mcitrg[each.key].location
   resource_group_name = azurerm_resource_group.mcitrg[each.key].name
-  service_plan_id     = azurerm_service_plan.plan[each.key].id
+  service_plan_id     = azurerm_service_plan.planok[each.key].id
   https_only          = true
 
   site_config {
