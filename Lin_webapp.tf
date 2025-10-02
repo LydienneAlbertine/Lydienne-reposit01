@@ -1,4 +1,4 @@
-variable "apps_by_region" {
+variable "apps_with_region" {
   type = map(object({
     app_name     : string
     sku_name     : string
@@ -15,21 +15,21 @@ variable "apps_by_region" {
 # -----------------------------------------
 # Resource Groups (one per region)
 # -----------------------------------------
-resource "azurerm_resource_group" "mcitrg" {
-  for_each = var.apps_by_region
+resource "azurerm_resource_group" "mcitrglyd" {
+  for_each = var.apps_with_region
 
-  name     = "mcitrg-${replace(lower(each.key), " ", "-")}"
+  name     = "mcitrglyd-${replace(lower(each.key), " ", "-")}"
   location = each.key
 }
 
 # -----------------------------------------
 # Windows App Service Plans (one per region, different SKUs/workers)
 # -----------------------------------------
-resource "azurerm_service_plan" "planok" {
-  for_each            = var.apps_by_region
+resource "azurerm_service_plan" "planol" {
+  for_each            = var.apps_with_region
   name                = "asp-${replace(lower(each.key), " ", "-")}"
   location            = azurerm_resource_group.mcitrg[each.key].location
-  resource_group_name = azurerm_resource_group.mcitrg[each.key].name
+  resource_group_name = azurerm_resource_group.mcitrglyd[each.key].name
 
   os_type      = "linux"
   sku_name     = each.value.sku_name
@@ -40,12 +40,12 @@ resource "azurerm_service_plan" "planok" {
 # linux Web Apps (one per region)
 # -----------------------------------------
 resource "azurerm_windows_web_app" "app" {
-  for_each            = var.apps_by_region
+  for_each            = var.apps_with_region
 
   name                = each.value.app_name       # must be globally unique
-  location            = azurerm_resource_group.mcitrg[each.key].location
-  resource_group_name = azurerm_resource_group.mcitrg[each.key].name
-  service_plan_id     = azurerm_service_plan.planok[each.key].id
+  location            = azurerm_resource_group.mcitrglyd[each.key].location
+  resource_group_name = azurerm_resource_group.mcitrglyd[each.key].name
+  service_plan_id     = azurerm_service_plan.planol[each.key].id
   https_only          = true
 
   site_config {
