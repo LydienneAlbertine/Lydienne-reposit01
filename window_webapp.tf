@@ -25,7 +25,7 @@ resource "azurerm_resource_group" "mcitrg" {
 # -----------------------------------------
 # Windows App Service Plans (one per region, different SKUs/workers)
 # -----------------------------------------
-resource "azurerm_service_plan" "plan" {
+resource "azurerm_service_plan" "planok" {
   for_each            = var.apps_by_region
   name                = "asp-${replace(lower(each.key), " ", "-")}"
   location            = azurerm_resource_group.mcitrg[each.key].location
