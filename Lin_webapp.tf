@@ -31,7 +31,7 @@ resource "azurerm_service_plan" "planol" {
   location            = azurerm_resource_group.mcitrg[each.key].location
   resource_group_name = azurerm_resource_group.mcitrglyd[each.key].name
 
-  os_type      = "linux"
+  os_type      = "Linux"
   sku_name     = each.value.sku_name
   worker_count = each.value.worker_count
 }
