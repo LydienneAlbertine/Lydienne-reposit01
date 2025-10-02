@@ -48,10 +48,11 @@ resource "azurerm_windows_web_app" "applyd" {
   service_plan_id     = azurerm_service_plan.planol[each.key].id
   https_only          = true
 
-  site_config {
-    always_on           = true
-    minimum_tls_version = "1.2"
-    ftps_state          = "FtpsOnly"
+site_config {
+always_on           = true
+minimum_tls_version = "1.2"
+ftps_state          = "FtpsOnly"
+curent_stack = "node.js 18"
 
     # Optional: uncomment and set if you know the runtime
     # application_stack {
