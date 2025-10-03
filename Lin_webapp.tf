@@ -54,6 +54,7 @@ minimum_tls_version = "1.2"
 ftps_state          = "FtpsOnly"
 linux_fx_version = node.js 18
 }
+}
 
 app_settings = {
 ENVIRONMENT = "prod"
