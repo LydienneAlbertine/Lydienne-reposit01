@@ -56,6 +56,10 @@ ftps_state          = "FtpsOnly"
  application_stack {
     #   current_stack  = node.js18
 }
+app_settings = {
+ENVIRONMENT = "prod"
+REGION_NAME = each.key
+}
 
     # Optional: uncomment and set if you know the runtime
     # application_stack {
@@ -64,8 +68,5 @@ ftps_state          = "FtpsOnly"
     # }
   }
 
-app_settings = {
-ENVIRONMENT = "prod"
-REGION_NAME = each.key
-}
+
 
