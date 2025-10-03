@@ -3,13 +3,13 @@ terraform{
     azurerm={
       source="hashicorp/azurerm"
       version= ">=3.70.0"#this version is for azurerm, NOT terraform version
-    }
   }
   required_version=">=1.4.0"#this version is for Terraform Version, NOT azurerm
 }
 random = {
 source  = "hashicorp/random"
 version = ">= 3.6.0"
+ }
 }
 
 provider "azurerm"{
