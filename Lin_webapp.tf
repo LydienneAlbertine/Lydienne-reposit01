@@ -39,10 +39,10 @@ resource "azurerm_service_plan" "planol" {
 # -----------------------------------------
 # linux Web Apps (one per region)
 # -----------------------------------------
-resource "azurerm_linux_web_app" "applyd" {
+resource "azurerm_linux_web_app" "applydi" {
   for_each            = var.apps_with_region
 
-  name                = each.value.applyd_name       # must be globally unique
+  name                = each.value.applydi_name       # must be globally unique
   location            = azurerm_resource_group.mcitrglyd[each.key].location
   resource_group_name = azurerm_resource_group.mcitrglyd[each.key].name
   service_plan_id     = azurerm_service_plan.planol[each.key].id
