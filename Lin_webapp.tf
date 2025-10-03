@@ -39,7 +39,7 @@ resource "azurerm_service_plan" "planol" {
 # -----------------------------------------
 # linux Web Apps (one per region)
 # -----------------------------------------
-resource "azurerm_windows_web_app" "applyd" {
+resource "azurerm_linux_web_app" "applyd" {
   for_each            = var.apps_with_region
 
   name                = each.value.applyd_name       # must be globally unique
