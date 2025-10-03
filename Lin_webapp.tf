@@ -53,8 +53,8 @@ always_on           = true
 minimum_tls_version = "1.2"
 ftps_state          = "FtpsOnly"
 }
- application_stack {
-    #   current_stack  = node.js18
+application_stack {
+current_stack  = node.js18
 }
 app_settings = {
 ENVIRONMENT = "prod"
