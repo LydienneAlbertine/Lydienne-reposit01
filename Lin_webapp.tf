@@ -64,9 +64,8 @@ ftps_state          = "FtpsOnly"
     # }
   }
 
-  app_settings = {
-    ENVIRONMENT = "prod"
-    REGION_NAME = each.key
-  }
+app_settings = {
+ENVIRONMENT = "prod"
+REGION_NAME = each.key
 }
 
