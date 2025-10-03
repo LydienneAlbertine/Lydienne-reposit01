@@ -9,6 +9,8 @@ source  = "hashicorp/random"
 version = ">= 3.6.0"
 }
 
+
+
 provider "azurerm"{
   features{}  
   subscription_id=var.subscription_id
