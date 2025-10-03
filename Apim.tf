@@ -36,7 +36,7 @@ locals {
 # Resource Group
 # --------------------------
 resource "azurerm_resource_group" "rgapim" {
- name     = local.rgapim_name
+ name     = local.rg_name
  location = var.locations
 }
 # --------------------------
