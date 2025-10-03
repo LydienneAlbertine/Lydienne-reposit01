@@ -52,7 +52,10 @@ site_config {
 always_on           = true
 minimum_tls_version = "1.2"
 ftps_state          = "FtpsOnly"
-node_version = "18-lts"
+}
+ application_stack {
+    #   current_stack  = node.js18
+}
 
     # Optional: uncomment and set if you know the runtime
     # application_stack {
