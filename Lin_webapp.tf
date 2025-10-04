@@ -53,12 +53,13 @@ resource "azurerm_linux_web_app" "applydi" {
     always_on           = true
     minimum_tls_version = "1.2"
     ftps_state          = "FtpsOnly"
-    linux_fx_version    = "NODE|18-lts"  # runtime Node.js 18
+   
   }
 
   app_settings = {
     ENVIRONMENT = "prod"
     REGION_NAME = each.key
+    WEBSITE_NODE_DEFAULT_VERSION = "18-lts"
   }
 }
 
