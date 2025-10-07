@@ -82,3 +82,65 @@ output "acr_login_server" {
   sensitive = true
 }
 
+
+variable "aks_clusters" {
+  description = "Paramètres pour créer plusieurs AKS"
+  type = map(object({
+    name       = string
+    dns_prefix = string
+    location   = string
+    node_count = number
+    vm_size    = string
+    rg_name    = string
+  }))
+  default = {
+    "LYDIENNE1" = { name = "aks-LYDIENNE1", dns_prefix = "lydienne-aks-1", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE1_AKS" }
+    "LYDIENNE2" = { name = "aks-LYDIENNE2", dns_prefix = "lydienne-aks-2", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE2_AKS" }
+    "LYDIENNE3" = { name = "aks-LYDIENNE3", dns_prefix = "lydienne-aks-3", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE3_AKS" }
+    "LYDIENNE4" = { name = "aks-LYDIENNE4", dns_prefix = "lydienne-aks-4", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE4_AKS" }
+    "LYDIENNE5" = { name = "aks-LYDIENNE5", dns_prefix = "lydienne-aks-5", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE5_AKS" }
+  }
+}
+
+# Resource groups pour chaque AKS
+resource "azurerm_resource_group" "rg_aks" {
+  for_each = var.aks_clusters
+  name     = each.value.rg_name
+  location = each.value.location
+}
+
+# Clusters AKS
+resource "azurerm_kubernetes_cluster" "aks" {
+  for_each            = var.aks_clusters
+  name                = each.value.name
+  location            = azurerm_resource_group.rg_aks[each.key].location
+  resource_group_name = azurerm_resource_group.rg_aks[each.key].name
+  dns_prefix          = each.value.dns_prefix
+
+  default_node_pool {
+    name       = "default"
+    node_count = each.value.node_count
+    vm_size    = each.value.vm_size
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    Environment = "Development"
+  }
+}
+
+# Outputs AKS
+output "client_certificate" {
+  value     = { for k, v in azurerm_kubernetes_cluster.aks : k => v.kube_config[0].client_certificate }
+  sensitive = true
+}
+
+output "kube_config" {
+  value     = { for k, v in azurerm_kubernetes_cluster.aks : k => v.kube_config_raw }
+  sensitive = true
+}
+
+
