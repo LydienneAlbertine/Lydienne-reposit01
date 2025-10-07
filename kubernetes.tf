@@ -94,33 +94,32 @@ variable "aks_clusters" {
     rg_name    = string
   }))
   default = {
-    "LYDIENNE1" = { name = "aks-LYDIENNE1", dns_prefix = "lydienne-aks-1", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE1_AKS" }
-    "LYDIENNE2" = { name = "aks-LYDIENNE2", dns_prefix = "lydienne-aks-2", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE2_AKS" }
-    "LYDIENNE3" = { name = "aks-LYDIENNE3", dns_prefix = "lydienne-aks-3", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE3_AKS" }
-    "LYDIENNE4" = { name = "aks-LYDIENNE4", dns_prefix = "lydienne-aks-4", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE4_AKS" }
-    "LYDIENNE5" = { name = "aks-LYDIENNE5", dns_prefix = "lydienne-aks-5", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_LYDIENNE5_AKS" }
+    "AKS1" = { name = "aks-LYDIENNE1", dns_prefix = "lydienne-aks-1", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_aks_lyd1" }
+    "AKS2" = { name = "aks-LYDIENNE2", dns_prefix = "lydienne-aks-2", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_aks_lyd2" }
+    "AKS3" = { name = "aks-LYDIENNE3", dns_prefix = "lydienne-aks-3", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_aks_lyd3" }
+    "AKS4" = { name = "aks-LYDIENNE4", dns_prefix = "lydienne-aks-4", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_aks_lyd4" }
+    "AKS5" = { name = "aks-LYDIENNE5", dns_prefix = "lydienne-aks-5", location = "West Europe", node_count = 2, vm_size = "Standard_DS2_v2", rg_name = "rg_aks_lyd5" }
   }
 }
 
 # Resource groups pour chaque AKS
-resource "azurerm_resource_group" "rg_aks" {
+resource "azurerm_resource_group" "rg_aks_lyd" {
   for_each = var.aks_clusters
   name     = each.value.rg_name
   location = each.value.location
 }
 
-# Clusters AKS
-resource "azurerm_kubernetes_cluster" "aks" {
-  for_each            = var.aks_clusters
-  name                = each.value.name
-  location            = azurerm_resource_group.rg_aks[each.key].location
-  resource_group_name = azurerm_resource_group.rg_aks[each.key].name
-  dns_prefix          = each.value.dns_prefix
+# Clusters AKS avec noms uniques
+resource "azurerm_kubernetes_cluster" "aks1" {
+  name                = var.aks_clusters["AKS1"].name
+  location            = azurerm_resource_group.rg_aks_lyd["AKS1"].location
+  resource_group_name = azurerm_resource_group.rg_aks_lyd["AKS1"].name
+  dns_prefix          = var.aks_clusters["AKS1"].dns_prefix
 
   default_node_pool {
     name       = "default"
-    node_count = each.value.node_count
-    vm_size    = each.value.vm_size
+    node_count = var.aks_clusters["AKS1"].node_count
+    vm_size    = var.aks_clusters["AKS1"].vm_size
   }
 
   identity {
@@ -132,15 +131,138 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 }
 
-# Outputs AKS
-output "client_certificate" {
-  value     = { for k, v in azurerm_kubernetes_cluster.aks : k => v.kube_config[0].client_certificate }
+resource "azurerm_kubernetes_cluster" "aks2" {
+  name                = var.aks_clusters["AKS2"].name
+  location            = azurerm_resource_group.rg_aks_lyd["AKS2"].location
+  resource_group_name = azurerm_resource_group.rg_aks_lyd["AKS2"].name
+  dns_prefix          = var.aks_clusters["AKS2"].dns_prefix
+
+  default_node_pool {
+    name       = "default"
+    node_count = var.aks_clusters["AKS2"].node_count
+    vm_size    = var.aks_clusters["AKS2"].vm_size
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    Environment = "Development"
+  }
+}
+
+resource "azurerm_kubernetes_cluster" "aks3" {
+  name                = var.aks_clusters["AKS3"].name
+  location            = azurerm_resource_group.rg_aks_lyd["AKS3"].location
+  resource_group_name = azurerm_resource_group.rg_aks_lyd["AKS3"].name
+  dns_prefix          = var.aks_clusters["AKS3"].dns_prefix
+
+  default_node_pool {
+    name       = "default"
+    node_count = var.aks_clusters["AKS3"].node_count
+    vm_size    = var.aks_clusters["AKS3"].vm_size
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    Environment = "Development"
+  }
+}
+
+resource "azurerm_kubernetes_cluster" "aks4" {
+  name                = var.aks_clusters["AKS4"].name
+  location            = azurerm_resource_group.rg_aks_lyd["AKS4"].location
+  resource_group_name = azurerm_resource_group.rg_aks_lyd["AKS4"].name
+  dns_prefix          = var.aks_clusters["AKS4"].dns_prefix
+
+  default_node_pool {
+    name       = "default"
+    node_count = var.aks_clusters["AKS4"].node_count
+    vm_size    = var.aks_clusters["AKS4"].vm_size
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    Environment = "Development"
+  }
+}
+
+resource "azurerm_kubernetes_cluster" "aks5" {
+  name                = var.aks_clusters["AKS5"].name
+  location            = azurerm_resource_group.rg_aks_lyd["AKS5"].location
+  resource_group_name = azurerm_resource_group.rg_aks_lyd["AKS5"].name
+  dns_prefix          = var.aks_clusters["AKS5"].dns_prefix
+
+  default_node_pool {
+    name       = "default"
+    node_count = var.aks_clusters["AKS5"].node_count
+    vm_size    = var.aks_clusters["AKS5"].vm_size
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    Environment = "Development"
+  }
+}
+
+# Outputs client_certificate uniques
+output "client_certificate1" {
+  value     = azurerm_kubernetes_cluster.aks1.kube_config[0].client_certificate
   sensitive = true
 }
 
-output "kube_config" {
-  value     = { for k, v in azurerm_kubernetes_cluster.aks : k => v.kube_config_raw }
+output "client_certificate2" {
+  value     = azurerm_kubernetes_cluster.aks2.kube_config[0].client_certificate
   sensitive = true
 }
 
+output "client_certificate3" {
+  value     = azurerm_kubernetes_cluster.aks3.kube_config[0].client_certificate
+  sensitive = true
+}
 
+output "client_certificate4" {
+  value     = azurerm_kubernetes_cluster.aks4.kube_config[0].client_certificate
+  sensitive = true
+}
+
+output "client_certificate5" {
+  value     = azurerm_kubernetes_cluster.aks5.kube_config[0].client_certificate
+  sensitive = true
+}
+
+# Outputs kube_config uniques
+output "kube_config1" {
+  value     = azurerm_kubernetes_cluster.aks1.kube_config_raw
+  sensitive = true
+}
+
+output "kube_config2" {
+  value     = azurerm_kubernetes_cluster.aks2.kube_config_raw
+  sensitive = true
+}
+
+output "kube_config3" {
+  value     = azurerm_kubernetes_cluster.aks3.kube_config_raw
+  sensitive = true
+}
+
+output "kube_config4" {
+  value     = azurerm_kubernetes_cluster.aks4.kube_config_raw
+  sensitive = true
+}
+
+output "kube_config5" {
+  value     = azurerm_kubernetes_cluster.aks5.kube_config_raw
+  sensitive = true
+}
