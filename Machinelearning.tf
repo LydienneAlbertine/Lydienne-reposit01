@@ -2,7 +2,7 @@ variable "prefix" {
  type    = string
  default = "montrealitcollege"
 }
-variable "tenant_id" {
+variable "tenant_id{
  type        = string
  description = "AAD tenant ID (required for Key Vault access policy)"
 }
@@ -65,16 +65,19 @@ resource "azurerm_key_vault_access_policy" "mcitprefix_kv_policy" {
  certificate_permissions = ["Get", "List"]
 }
 resource "azurerm_machine_learning_compute_cluster" "mcitprefix_cpu" {
- name                = "${var.prefix}-cpu"
- location            = azurerm_resource_group.mcitprefix_rg.location
- resource_group_name = azurerm_resource_group.mcitprefix_rg.name
- workspace_name      = azurerm_machine_learning_workspace.mcitprefix_ws.name
- vm_size = "STANDARD_DS3_V2"
- scale_settings {
-   min_node_count = 0
-   max_node_count = 1
- }
+  name                            = "${var.prefix}-cpu"
+  location                        = azurerm_resource_group.mcitprefix_rg.location
+  machine_learning_workspace_id   = azurerm_machine_learning_workspace.mcitprefix_ws.id
+  vm_size                         = "STANDARD_DS3_V2"
+  vm_priority                     = "Dedicated"
+
+  scale_settings {
+    min_node_count                         = 0
+    max_node_count                         = 1
+    scale_down_nodes_after_idle_duration   = "PT30M"
+  }
 }
+
 output "resource_group" {
  value = azurerm_resource_group.mcitprefix_rg.name
 }
