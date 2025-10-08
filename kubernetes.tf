@@ -108,8 +108,8 @@ resource "azurerm_resource_group" "rg_aks_lyd" {
   location = each.value.location
 }
 
-# Clusters AKS avec for_each
-resource "azurerm_kubernetes_cluster" "aks" {
+# Clusters AKS1 avec for_each
+resource "azurerm_kubernetes_cluster" "aks1" {
   for_each            = var.aks_clusters
   name                = each.value.name
   location            = azurerm_resource_group.rg_aks_lyd[each.key].location
@@ -132,13 +132,13 @@ resource "azurerm_kubernetes_cluster" "aks" {
 }
 
 # Outputs client_certificate dynamiques
-output "client_certificates" {
-  value     = { for k, aks in azurerm_kubernetes_cluster.aks : k => aks.kube_config[0].client_certificate }
+output "client_certificates_aks1" {
+  value     = { for k, aks1 in azurerm_kubernetes_cluster.aks1 : k => aks1.kube_config[0].client_certificate }
   sensitive = true
 }
 
 # Outputs kube_config dynamiques
-output "kube_configs" {
-  value     = { for k, aks in azurerm_kubernetes_cluster.aks : k => aks.kube_config_raw }
+output "kube_configs_aks1" {
+  value     = { for k, aks1 in azurerm_kubernetes_cluster.aks1 : k => aks1.kube_config_raw }
   sensitive = true
 }
