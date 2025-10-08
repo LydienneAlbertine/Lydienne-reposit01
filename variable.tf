@@ -7,9 +7,6 @@ variable "client_id"{
 variable "client_secret"{
   type=string
 }
-variable "tenant_id"{
-  type=string
-}
 variable "firstname"{
 type=string
 default="lydienne"
