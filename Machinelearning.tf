@@ -11,11 +11,6 @@ variable "prefix" {
   default = "montrealitcollege"
 }
 
-variable "location" {
-  type    = string
-  default = "canadacentral"
-}
-
 # =========================
 # RANDOM STRING (pour noms uniques)
 # =========================
