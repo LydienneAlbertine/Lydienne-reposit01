@@ -1,6 +1,5 @@
-# =========================
+
 # VARIABLES
-# =========================
 variable "tenant_id" {
   type        = string
   description = "AAD tenant ID (required for Key Vault access policy)"
