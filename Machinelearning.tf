@@ -10,26 +10,20 @@ variable "prefix" {
   default = "montrealitcollege"
 }
 
-# =========================
 # RANDOM STRING (pour noms uniques)
-# =========================
 resource "random_string" "mcitprefix_random" {
   length  = 6
   upper   = false
   special = false
 }
 
-# =========================
 # RESOURCE GROUP
-# =========================
 resource "azurerm_resource_group" "mcitprefix_rg" {
   name     = "mcitrg"
   location = var.location
 }
 
-# =========================
 # STORAGE ACCOUNT
-# =========================
 resource "azurerm_storage_account" "mcitprefix_sa" {
   name                     = "${var.prefix}sa${random_string.mcitprefix_random.result}"
   resource_group_name      = azurerm_resource_group.mcitprefix_rg.name
@@ -38,9 +32,7 @@ resource "azurerm_storage_account" "mcitprefix_sa" {
   account_replication_type = "LRS"
 }
 
-# =========================
 # APPLICATION INSIGHTS
-# =========================
 resource "azurerm_application_insights" "mcitprefix_appi" {
   name                = "${var.prefix}-appi"
   location            = azurerm_resource_group.mcitprefix_rg.location
@@ -48,9 +40,7 @@ resource "azurerm_application_insights" "mcitprefix_appi" {
   application_type    = "web"
 }
 
-# =========================
 # KEY VAULT
-# =========================
 resource "azurerm_key_vault" "mcitprefix_kv" {
   name                       = "${var.prefix}-kv"
   resource_group_name        = azurerm_resource_group.mcitprefix_rg.name
@@ -61,9 +51,7 @@ resource "azurerm_key_vault" "mcitprefix_kv" {
   soft_delete_retention_days = 7
 }
 
-# =========================
 # MACHINE LEARNING WORKSPACE
-# =========================
 resource "azurerm_machine_learning_workspace" "mcitprefix_ws" {
   name                     = "${var.prefix}-ws"
   location                 = azurerm_resource_group.mcitprefix_rg.location
@@ -83,9 +71,7 @@ resource "azurerm_machine_learning_workspace" "mcitprefix_ws" {
   }
 }
 
-# =========================
 # KEY VAULT ACCESS POLICY
-# =========================
 resource "azurerm_key_vault_access_policy" "mcitprefix_kv_policy" {
   key_vault_id = azurerm_key_vault.mcitprefix_kv.id
   tenant_id    = var.tenant_id
@@ -96,9 +82,7 @@ resource "azurerm_key_vault_access_policy" "mcitprefix_kv_policy" {
   certificate_permissions = ["Get", "List"]
 }
 
-# =========================
 # MACHINE LEARNING COMPUTE CLUSTER
-# =========================
 resource "azurerm_machine_learning_compute_cluster" "mcitprefix_cpu" {
   name                          = "${var.prefix}-cpu"
   location                      = azurerm_resource_group.mcitprefix_rg.location
@@ -113,9 +97,7 @@ resource "azurerm_machine_learning_compute_cluster" "mcitprefix_cpu" {
   }
 }
 
-# =========================
 # OUTPUTS
-# =========================
 output "resource_group" {
   value = azurerm_resource_group.mcitprefix_rg.name
 }
