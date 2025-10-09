@@ -85,7 +85,7 @@ resource "azurerm_key_vault_access_policy" "mcitprefix_kv_policy" {
 resource "azurerm_machine_learning_compute_cluster" "mcitprefix_cpu" {
   name                          = "${var.prefix}-cpu"
   location                      = azurerm_resource_group.mcitprefix_rg.location
-  machine_learning_workspace_name = azurerm_machine_learning_workspace.mcitprefix_ws.id
+  machine_learning_workspace_id = azurerm_machine_learning_workspace.mcitprefix_ws.id
   vm_priority                   = "LowPriority"
   vm_size                       = "STANDARD_DS3_V2"
 
