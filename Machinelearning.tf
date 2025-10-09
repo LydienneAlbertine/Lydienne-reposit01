@@ -86,7 +86,7 @@ resource "azurerm_machine_learning_compute_cluster" "mcitprefix_cpu" {
   name                          = "${var.prefix}-cpu"
   location                      = azurerm_resource_group.mcitprefix_rg.location
   machine_learning_workspace_name = azurerm_machine_learning_workspace.mcitprefix_ws.id
-  vm_priority                   = "Dedicated"
+  vm_priority                   = "LowPriority"
   vm_size                       = "STANDARD_DS3_V2"
 
   scale_settings {
