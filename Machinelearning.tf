@@ -103,3 +103,50 @@ output "resource_group" {
 output "workspace_name" {
   value = azurerm_machine_learning_workspace.mcitprefix_ws.name
 }
+
+
+# =========================
+# VARIABLE POUR LES CLUSTERS
+# =========================
+variable "ml_clusters" {
+  type = map(object({
+    vm_size    = string
+    min_nodes  = number
+    max_nodes  = number
+  }))
+  default = {
+    cluster1 = { vm_size = "STANDARD_DS3_V2", min_nodes = 0, max_nodes = 1 }
+    cluster2 = { vm_size = "STANDARD_DS3_V2", min_nodes = 0, max_nodes = 1 }
+    cluster3 = { vm_size = "STANDARD_DS3_V2", min_nodes = 0, max_nodes = 1 }
+    cluster4 = { vm_size = "STANDARD_DS3_V2", min_nodes = 0, max_nodes = 1 }
+    cluster5 = { vm_size = "STANDARD_DS3_V2", min_nodes = 0, max_nodes = 1 }
+  }
+}
+
+# =========================
+# CREATION DES 5 CLUSTERS AVEC FOR_EACH
+# =========================
+resource "azurerm_machine_learning_compute_cluster" "ml_clusters" {
+  for_each = var.ml_clusters
+
+  name                          = "${var.prefix}-${each.key}-cpu"
+  location                      = azurerm_resource_group.mcitprefix_rg.location
+  machine_learning_workspace_id = azurerm_machine_learning_workspace.mcitprefix_ws.id
+  vm_size                       = each.value.vm_size
+  vm_priority                   = "Dedicated"
+
+  scale_settings {
+    min_node_count                   = each.value.min_nodes
+    max_node_count                   = each.value.max_nodes
+    scale_down_nodes_after_idle_duration = "PT30M"
+  }
+}
+
+# OUTPUT DYNAMIQUE POUR TOUS LES CLUSTERS
+output "ml_cluster_names" {
+  value = { for k, cluster in azurerm_machine_learning_compute_cluster.ml_clusters : k => cluster.name }
+}
+
+output "ml_cluster_ids" {
+  value = { for k, cluster in azurerm_machine_learning_compute_cluster.ml_clusters : k => cluster.id }
+}
