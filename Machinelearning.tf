@@ -66,7 +66,6 @@ resource "azurerm_machine_learning_workspace" "mcitprefix_ws" {
 
   tags = {
     environment = "dev"
-    project     = "mcitprefix"
   }
 }
 
